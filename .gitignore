@@ -1,0 +1,29 @@
+# definitive
+node_modules
+
+templates
+
+JSONs
+
+utils
+
+log.txt
+
+todo.md
+
+config.json
+
+.replit
+
+# bin
+index_twitch.js
+
+memetwitch.js
+
+pages.js
+
+server.json
+
+
+
+

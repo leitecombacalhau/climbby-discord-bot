@@ -1,0 +1,28 @@
+{
+  "name": "ClimbbyTwitchDiscordBot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "ascii-table": "^0.0.9",
+    "axios": "^0.26.0",
+    "discord.js": "^13.5.0",
+    "express": "^4.17.1",
+    "leetify": "^1.0.1",
+    "memejs": "^2.0.1",
+    "mongoose": "^6.0.5",
+    "nodemon": "^2.0.15",
+    "one-liner-joke": "^1.2.2",
+    "pretty-ms": "^7.0.1",
+    "snekfetch": "^4.0.4",
+    "tmi.js": "^1.8.5",
+    "weather-js": "^2.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
