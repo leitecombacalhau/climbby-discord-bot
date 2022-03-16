@@ -52,7 +52,7 @@ module.exports = new Command({
     const collector = embedMessage.createMessageComponentCollector({
       filter,
       max: maxMembers,
-      time: 4000,
+      time: 30000,
     });
 
     collector.on("collect", (interaction) => {
