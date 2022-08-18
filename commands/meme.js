@@ -1,5 +1,5 @@
 const { MessageEmbed } = require("discord.js");
-const snekfetch = require("snekfetch");
+const fetch = require("node-fetch");
 const Command = require("../structures/Command");
 
 module.exports = new Command({
@@ -42,9 +42,10 @@ module.exports = new Command({
       random = sReddit;
     }
     try {
-      const url = `https://www.reddit.com/r/${random}.json?sort=top&t=week`;
+      const url = `https://www.reddit.com/r/${random}.json?sort=top&t=week&limit=800`;
 
-      const { body } = await snekfetch.get(url).query({ limit: 800 });
+      const response = await fetch(url);
+      const body = await response.json();
       const allowed = message.channel.nsfw
         ? body.data.children
         : body.data.children.filter((post) => !post.data.over_18);
@@ -54,7 +55,7 @@ module.exports = new Command({
         );
       let randomnumber = Math.floor(Math.random() * allowed.length);
       let count = 0;
-      while (allowed[randomnumber].data.is_self && count < 800) {
+      while ((allowed[randomnumber].data.is_self || allowed[randomnumber].data.is_gallery)&& count < 800) {
         randomnumber = Math.floor(Math.random() * allowed.length);
         count++;
       }
@@ -75,7 +76,7 @@ module.exports = new Command({
             allowed[randomnumber].data.num_comments
         )
         .setTitle(allowed[randomnumber].data.title)
-        .setURL(allowed[randomnumber].url)
+        .setURL(`https://reddit.com${allowed[randomnumber].data.permalink}`)
         .setFooter({
           text: `Memes provided by ${allowed[randomnumber].data.subreddit_name_prefixed}`,
         });

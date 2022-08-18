@@ -11,7 +11,9 @@ module.exports = new Command({
     let mentionedMember = message.mentions.members.first() || message.member;
 
     message.channel.send({
-      contet: `https://some-random-api.ml/canvas/jail?avatar=${mentionedMember.user.displayAvatarURL()}`,
+      content: `https://some-random-api.ml/canvas/jail?avatar=${mentionedMember.user.displayAvatarURL(
+        { dynamic: false, format: "png" }
+      )}`,
     });
   },
 });

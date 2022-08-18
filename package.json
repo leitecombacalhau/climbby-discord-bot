@@ -11,6 +11,8 @@
     "leetify": "^1.0.1",
     "memejs": "^2.0.1",
     "mongoose": "^6.0.5",
+    "ms": "^2.1.3",
+    "node-fetch": "^2.6.7",
     "nodemon": "^2.0.15",
     "one-liner-joke": "^1.2.2",
     "pretty-ms": "^7.0.1",
@@ -24,5 +26,16 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "node": "^16.14.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MiguelCRP/climbby-discord-bot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MiguelCRP/climbby-discord-bot/issues"
+  },
+  "homepage": "https://github.com/MiguelCRP/climbby-discord-bot#readme"
 }

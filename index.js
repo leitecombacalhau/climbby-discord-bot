@@ -55,6 +55,7 @@ const validatePerms = (perm) => {
  * @param {Client} client
  */
 const run = (client) => {
+  console.log(client)
   client.once("ready", (c) => {
     console.log(
       `Logged as ${c.user.tag} [${new Date().toLocaleString("pt-PT", {
@@ -64,7 +65,7 @@ const run = (client) => {
     );
 
     c.user.setActivity(`${defaultPrefix}help [cmd]`, {
-      type: "STREAMING",
+      type: "PLAYING",
       url: "https://www.youtube.com/channel/UCMNjsTU3LdrhSk0bWveBkIg",
     });
 
@@ -236,19 +237,19 @@ const run = (client) => {
 
     try {
       await client.channels.cache
-        .get("881892878153048074")
-        .setName(`🌍Total: ${member.guild.memberCount}`);
+        .get("947976242286690314")
+        .setName(`🌍All of Us: ${member.guild.memberCount}`);
       await client.channels.cache
-        .get("881892941793202249")
+        .get("947976245298225233")
         .setName(
-          `👤Users: ${
-            member.guild.members.cache.filter((m) => !m.user.bot).size
+          `👤Gamers: ${
+          member.guild.members.cache.filter((m) => !m.user.bot).size
           }`
         );
       await client.channels.cache
-        .get("881895365857652777")
+        .get("947976249106653195")
         .setName(
-          `🤖Bots: ${member.guild.members.cache.filter((m) => m.user.bot).size}`
+          `🤖Dogts: ${member.guild.members.cache.filter((m) => m.user.bot).size}`
         );
     } catch (err) {
       throw err;
@@ -274,7 +275,7 @@ const run = (client) => {
         .get("881892941793202249")
         .setName(
           `👤Users: ${
-            member.guild.members.cache.filter((m) => !m.user.bot).size
+          member.guild.members.cache.filter((m) => !m.user.bot).size
           }`
         );
       await client.channels.cache
@@ -288,14 +289,18 @@ const run = (client) => {
   });
 };
 
-mongoose
-  .connect(mongoToken)
-  .then(() => {
+
+(async () => {
+  try {
+    await mongoose.connect(mongoToken)
     console.log("Connected to the database!");
-    run(client);
-    client.login(DCToken);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+    await client.login(DCToken)
+    run(client)
+  }
+  catch (err) {
+    console.log(err)
+  }
+
+})();
+
 server(PORT, HOST);
