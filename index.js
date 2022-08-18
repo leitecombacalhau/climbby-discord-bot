@@ -55,7 +55,6 @@ const validatePerms = (perm) => {
  * @param {Client} client
  */
 const run = (client) => {
-  console.log(client)
   client.once("ready", (c) => {
     console.log(
       `Logged as ${c.user.tag} [${new Date().toLocaleString("pt-PT", {
@@ -295,7 +294,6 @@ const run = (client) => {
     await mongoose.connect(mongoToken)
     console.log("Connected to the database!");
     await client.login(DCToken)
-    run(client)
   }
   catch (err) {
     console.log(err)
@@ -303,4 +301,5 @@ const run = (client) => {
 
 })();
 
+run(client)
 server(PORT, HOST);
