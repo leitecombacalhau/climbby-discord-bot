@@ -236,19 +236,18 @@ const run = (client) => {
 
     try {
       await client.channels.cache
-        .get("947976242286690314")
-        .setName(`🌍All of Us: ${member.guild.memberCount}`);
-      await client.channels.cache
-        .get("947976245298225233")
+        .get("1010055980068909056")
         .setName(
-          `👤Gamers: ${
-          member.guild.members.cache.filter((m) => !m.user.bot).size
+          `👤Viewers: ${
+            member.guild.members.cache.filter((m) => !m.user.bot).size
           }`
         );
       await client.channels.cache
         .get("947976249106653195")
         .setName(
-          `🤖Dogts: ${member.guild.members.cache.filter((m) => m.user.bot).size}`
+          `🤖Dogts: ${
+            member.guild.members.cache.filter((m) => m.user.bot).size
+          }`
         );
     } catch (err) {
       throw err;
@@ -268,19 +267,18 @@ const run = (client) => {
     );
     try {
       await client.channels.cache
-        .get("881892878153048074")
-        .setName(`🌍Total: ${member.guild.memberCount}`);
-      await client.channels.cache
-        .get("881892941793202249")
+        .get("1010055980068909056")
         .setName(
-          `👤Users: ${
-          member.guild.members.cache.filter((m) => !m.user.bot).size
+          `👤Viewers: ${
+            member.guild.members.cache.filter((m) => !m.user.bot).size
           }`
         );
       await client.channels.cache
-        .get("881895365857652777")
+        .get("947976249106653195")
         .setName(
-          `🤖Bots: ${member.guild.members.cache.filter((m) => m.user.bot).size}`
+          `🤖Dogts: ${
+            member.guild.members.cache.filter((m) => m.user.bot).size
+          }`
         );
     } catch (err) {
       throw err;
@@ -288,18 +286,15 @@ const run = (client) => {
   });
 };
 
-
 (async () => {
   try {
-    await mongoose.connect(mongoToken)
+    await mongoose.connect(mongoToken);
     console.log("Connected to the database!");
-    await client.login(DCToken)
+    await client.login(DCToken);
+  } catch (err) {
+    console.log(err);
   }
-  catch (err) {
-    console.log(err)
-  }
-
 })();
 
-run(client)
+run(client);
 server(PORT, HOST);
